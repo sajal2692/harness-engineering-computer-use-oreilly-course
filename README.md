@@ -2,8 +2,8 @@
 
 Companion repository for the O'Reilly live course **Harness Engineering for Computer Use**, taught by Sajal Sharma.
 
-The course has instructor-led demos. You can follow them in class without installing anything. This repository lets
-you read the code during the session and run the demos yourself afterwards.
+This repository holds the code for the course's two demos. I run both live in class, so you don't need to install
+anything to follow along. To run them yourself afterwards, use the setup below.
 
 ## Repository map
 
