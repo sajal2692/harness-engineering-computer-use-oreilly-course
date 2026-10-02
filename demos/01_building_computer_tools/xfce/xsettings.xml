@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Draw applications at twice the size, and text at 1.2 times that -->
+<channel name="xsettings" version="1.0">
+  <property name="Gdk" type="empty">
+    <property name="WindowScalingFactor" type="int" value="2"/>
+  </property>
+  <property name="Xft" type="empty">
+    <property name="DPI" type="int" value="115"/>
+  </property>
+  <property name="Net" type="empty">
+    <property name="ThemeName" type="string" value="Adwaita"/>
+    <property name="IconThemeName" type="string" value="elementary-xfce"/>
+  </property>
+  <property name="Gtk" type="empty">
+    <property name="CursorThemeName" type="string" value="Adwaita"/>
+    <property name="CursorThemeSize" type="int" value="48"/>
+  </property>
+</channel>

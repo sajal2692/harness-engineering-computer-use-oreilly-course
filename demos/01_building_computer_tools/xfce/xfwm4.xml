@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Window title bars and buttons sized for the doubled display -->
+<channel name="xfwm4" version="1.0">
+  <property name="general" type="empty">
+    <property name="theme" type="string" value="Default-xhdpi"/>
+    <property name="title_font" type="string" value="Sans Bold 10"/>
+    <property name="use_compositing" type="bool" value="false"/>
+  </property>
+</channel>
