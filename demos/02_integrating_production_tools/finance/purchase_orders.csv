@@ -1,0 +1,7 @@
+po_number,vendor,amount_cad,expense_account,status
+PO-1001,Northbeam Cloud,1240.00,Expenses:Cloud Hosting,open
+PO-1002,Acme Office Supply,318.45,Expenses:Office Supplies,open
+PO-1003,Brightline Consulting,4000.00,Expenses:Consulting,open
+PO-1004,Pixel Design Studio,860.00,Expenses:Design Services,open
+PO-1005,Metro Couriers,96.20,Expenses:Courier,open
+PO-1006,Keystone Software,2150.00,Expenses:Software,open
