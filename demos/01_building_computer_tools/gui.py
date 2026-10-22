@@ -64,7 +64,7 @@ def xdotool(*args):
 def click(name, coordinate=None, text=None):
     button, count = BUTTONS[name]
     if coordinate:
-        xdotool("mousemove", "--sync", *to_display(coordinate))
+        xdotool("mousemove", *to_display(coordinate))
     modifiers = text.split("+") if text else []
     if modifiers:
         xdotool("keydown", *modifiers)
@@ -88,13 +88,13 @@ def key(text, repeat=1):
 # 6. scroll, mouse_move, and wait
 def scroll(scroll_direction, scroll_amount, coordinate=None, text=None):
     if coordinate:
-        xdotool("mousemove", "--sync", *to_display(coordinate))
+        xdotool("mousemove", *to_display(coordinate))
     xdotool("click", "--repeat", scroll_amount, SCROLL_BUTTONS[scroll_direction])
     return "OK"
 
 
 def mouse_move(coordinate):
-    xdotool("mousemove", "--sync", *to_display(coordinate))
+    xdotool("mousemove", *to_display(coordinate))
     return "OK"
 
 

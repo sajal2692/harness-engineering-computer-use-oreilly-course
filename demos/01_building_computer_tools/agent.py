@@ -8,7 +8,7 @@ import anthropic
 import record
 from output import tagged
 from tools import TOOLS, run_tool
-from utils import preview
+from utils import flash, preview
 
 MODEL = "claude-sonnet-5-5"
 SKIPPED = "Not executed: an earlier computer action in this turn failed."
@@ -72,6 +72,8 @@ def run(task, system, step=False):
                     preview(call.name, call.input)  # show the room what Claude is about to do
                 pause("Press Enter to run it on the desktop.")
                 content, is_error = run_tool(call)
+                if step and not is_error:
+                    flash(call.name, call.input)  # show the room what Claude just did
                 failed = is_error and call.toolset_name == "computer"
             shown = content if isinstance(content, str) else "an image"
             print(tagged("result", ("error " if is_error else "") + shown))

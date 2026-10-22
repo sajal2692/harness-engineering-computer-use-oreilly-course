@@ -1,4 +1,5 @@
 """The GUI tools on E2B: each action is one call to the E2B Desktop SDK, which runs xdotool inside the sandbox.
+Pointer moves are our own xdotool command.
 
 The desktop is the same size as Claude's screenshots, so coordinates need no scaling here."""
 
@@ -41,10 +42,17 @@ def on_screen(coordinate):
     return x, y
 
 
-# 3. click, type_text, key, scroll, and wait: one SDK call each
+# 3. move: the SDK's move_mouse waits for the pointer to move, so it hangs for about 15 seconds when the pointer is
+#    already on the point. A plain xdotool move doesn't wait.
+def move(point):
+    desktop.sandbox.commands.run(f"xdotool mousemove {point[0]} {point[1]}")
+
+
+# 4. click, type_text, key, scroll, and wait: one SDK call each, after the move
 def click(name, coordinate=None):
-    point = on_screen(coordinate) if coordinate else ()
-    getattr(desktop.sandbox, CLICKS[name])(*point)
+    if coordinate:
+        move(on_screen(coordinate))
+    getattr(desktop.sandbox, CLICKS[name])()
     return "OK"
 
 
@@ -64,13 +72,13 @@ def key(text, repeat=1):
 
 def scroll(scroll_direction, scroll_amount, coordinate=None):
     if coordinate:
-        desktop.sandbox.move_mouse(*on_screen(coordinate))
+        move(on_screen(coordinate))
     desktop.sandbox.scroll(scroll_direction, scroll_amount)
     return "OK"
 
 
 def mouse_move(coordinate):
-    desktop.sandbox.move_mouse(*on_screen(coordinate))
+    move(on_screen(coordinate))
     return "OK"
 
 
@@ -79,7 +87,7 @@ def wait(duration):
     return "OK"
 
 
-# 4. zoom: crop a region of the screen and enlarge it, so small text is easier to read
+# 5. zoom: crop a region of the screen and enlarge it, so small text is easier to read
 def zoom(region):
     on_screen(region[:2]), on_screen((region[2] - 1, region[3] - 1))
     crop = screenshot().crop(region)

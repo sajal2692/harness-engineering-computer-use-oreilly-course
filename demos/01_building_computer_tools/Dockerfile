@@ -10,6 +10,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
         imagemagick xdotool wmctrl \
         x11vnc novnc websockify \
     && rm -rf /var/lib/apt/lists/*
+#    Tk, for the frames utils.py draws with --step after each screenshot, click, and key press. It is for people too.
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3-tk \
+    && rm -rf /var/lib/apt/lists/*
 
 # 2. An ordinary user account, with the task's files in its home folder and Xfce's settings:
 #    the default panels, and applications drawn at twice the size, like a high-resolution laptop screen

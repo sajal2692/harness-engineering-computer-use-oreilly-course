@@ -11,9 +11,10 @@ load_dotenv()  # reads E2B_API_KEY from the .env file at the top of the reposito
 NAME = "computer-use-course-gnucash"
 
 # E2B's own desktop template, plus a desktop accounting app, its SQLite storage driver, and the SQLite command line
-# to query its books. GnuCash's tip of the day is switched off so it does not cover the window at start.
+# to query its books. Tk draws the frames utils.py shows with --step after each screenshot, click, and key press.
+# GnuCash's tip of the day is switched off so it does not cover the window at start.
 template = (Template().from_template("desktop")
-            .apt_install(["gnucash", "libdbd-sqlite3", "sqlite3"])
+            .apt_install(["gnucash", "libdbd-sqlite3", "sqlite3", "python3-tk"])
             .run_cmd("dbus-run-session gsettings set org.gnucash.GnuCash.dialogs.totd show-at-startup false || true",
                      user="user"))
 

@@ -35,7 +35,7 @@ this directory. The first run builds the desktop image, which takes a few minute
 | `tools.py` | The tool definitions Claude sees, and `run_tool`, which runs one call |
 | `agent.py` | The agent loop |
 | `record.py` | The run record: `runs/<date-time>/trail.md`, with each turn's tool calls, results, and the screenshots Claude received |
-| `utils.py` | The `--step` preview: it moves the pointer onto Claude's target before a click. Not a tool |
+| `utils.py` | The `--step` preview: it moves the pointer onto Claude's target and boxes it before a click, and after each action shows what was captured, clicked, or typed. Not a tool |
 | `output.py` | The colored `[tag]` at the start of every printed line |
 
 ## Running it
@@ -44,9 +44,12 @@ this directory. The first run builds the desktop image, which takes a few minute
 uv run main.py --step
 ```
 
-Open the viewer link it prints in your browser. `--step` pauses at each hand-off in the loop: before the task goes
-to Claude, before each tool call runs, and before the results go back. Before a click runs, the pointer moves onto
-the point Claude chose, so the viewer shows the target. Press Enter to continue.
+Open the viewer link it prints in your browser. `--step` pauses at each hand-off in the loop: before the task goes to
+Claude, before each tool call runs, and before the results go back. Before a click runs, the pointer moves onto the
+point Claude chose and a red box marks it, so the viewer shows the target. After each action, a red frame shows for
+about half a second: around the area a screenshot captured, around the point that was clicked, or as a label with the
+keys that were typed. It is drawn after the action and gone before the next one, so Claude never sees it. Press Enter to
+continue.
 
 ```bash
 uv run main.py

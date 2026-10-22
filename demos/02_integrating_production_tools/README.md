@@ -54,13 +54,13 @@ this directory.
 | `template.py` | Builds the E2B template: E2B's desktop plus GnuCash and `sqlite3`. Run once |
 | `desktop.py` | Creates the desktop with internet access off, uploads the files, locks the finance records, opens GnuCash |
 | `shell.py` | Runs each command through E2B's commands API, marks output as data, logs it for `watch.py`, and the file viewer |
-| `gui.py` | Screenshots and mouse and keyboard input, one E2B Desktop SDK call each |
+| `gui.py` | Screenshots and mouse and keyboard input, one E2B Desktop SDK call each, with pointer moves as a plain xdotool command |
 | `tools.py` | The tool definitions, the route lines, the permission check, the approval, and `run_tool` |
 | `check.py` | The outside check: queries the books and the batch and compares them with the known answers |
 | `agent.py` | The agent loop, the same file as Demo 1 |
 | `record.py` | The run record: `runs/<date-time>/trail.md`, plus the approved batch and the books after the run |
 | `watch.py` | Follows the shell on the E2B desktop from a second terminal: each command, its output, and blocks |
-| `utils.py`, `output.py` | The `--step` preview and the colored `[tag]` lines |
+| `utils.py`, `output.py` | The `--step` preview and action frames, and the colored `[tag]` lines |
 | `inbox/`, `finance/`, `books/` | The invoices, the purchase orders and vendor list, and the company's GnuCash books |
 | `make_files.py` | Made the files above. Only needed to change them |
 
